@@ -1,0 +1,1802 @@
+/* =========================================================
+   ONES & ZEROS
+   CHAMBER 05 — GHOST
+   COMPLETE CSS
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  background: #02090b;
+}
+
+body {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: #dffcff;
+}
+
+/* =========================================================
+   PAGE / ATMOSPHERE
+   ========================================================= */
+
+.chamber5-page {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(0, 225, 235, .075), transparent 32%),
+    radial-gradient(circle at 80% 80%, rgba(111, 40, 170, .05), transparent 30%),
+    linear-gradient(180deg, #02090b 0%, #031214 48%, #020809 100%);
+}
+
+.chamber5-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.018) 0,
+    rgba(255,255,255,.018) 1px,
+    transparent 1px,
+    transparent 5px
+  );
+  opacity: .3;
+}
+
+.binary-rain {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  color: #58eaf3;
+  opacity: .035;
+  font: 11px/2 monospace;
+  letter-spacing: 5px;
+  white-space: pre-wrap;
+}
+
+/* =========================================================
+   SPIDER ATMOSPHERE — NO FLOATING GHOSTS
+   6 SPIDERS + 6 SPIDER WEBS
+   ========================================================= */
+
+.spider-atmosphere {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* =========================================================
+   SPIDER WEBS
+   ========================================================= */
+
+.web {
+  position: fixed;
+  width: 220px;
+  height: 220px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: .24;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, transparent 0 18%, rgba(220,245,245,.20) 18.5% 19%, transparent 19.5% 36%, rgba(220,245,245,.16) 36.5% 37%, transparent 37.5% 55%, rgba(220,245,245,.12) 55.5% 56%, transparent 56.5%),
+    linear-gradient(45deg, transparent 49.5%, rgba(220,245,245,.20) 50%, transparent 50.5%),
+    linear-gradient(-45deg, transparent 49.5%, rgba(220,245,245,.20) 50%, transparent 50.5%);
+  filter: drop-shadow(0 0 5px rgba(160,235,235,.12));
+}
+
+.web::before,
+.web::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(220,245,245,.24);
+  border-radius: 50%;
+}
+
+.web::before {
+  transform: rotate(30deg) scaleX(.72);
+}
+
+.web::after {
+  transform: rotate(60deg) scaleX(.72);
+}
+
+.web-1 { top: -90px; left: -80px; }
+.web-2 { top: -90px; right: -80px; transform: rotate(25deg); }
+.web-3 { bottom: -100px; left: 8%; transform: rotate(15deg) scale(.82); }
+.web-4 { bottom: -100px; right: 8%; transform: rotate(-20deg) scale(.82); }
+.web-5 { top: 28%; left: -125px; transform: rotate(65deg) scale(.68); }
+.web-6 { top: 34%; right: -125px; transform: rotate(-65deg) scale(.68); }
+
+/* =========================================================
+   SIX VERTICAL SPIDERS
+   ========================================================= */
+
+.spider {
+  position: fixed;
+  width: 42px;
+  height: 250px;
+  pointer-events: none;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  opacity: .62;
+  animation: spiderVertical 10s ease-in-out infinite;
+}
+
+.spider-thread {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 1px;
+  height: 225px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    rgba(230,255,255,.03),
+    rgba(230,255,255,.55),
+    rgba(230,255,255,.08)
+  );
+  box-shadow: 0 0 5px rgba(180,240,240,.12);
+}
+
+.spider-body {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 26px;
+  line-height: 1;
+  filter: grayscale(1) brightness(.72) drop-shadow(0 0 7px rgba(110,235,235,.32));
+  animation: spiderWalk .7s steps(2,end) infinite;
+}
+
+.spider-1 { left: 5%; top: 7%; animation-duration: 11s; animation-delay: -1s; }
+.spider-2 { left: 20%; top: 28%; animation-duration: 13s; animation-delay: -4s; }
+.spider-3 { left: 38%; top: 5%; animation-duration: 10s; animation-delay: -7s; }
+.spider-4 { right: 30%; top: 32%; animation-duration: 14s; animation-delay: -3s; }
+.spider-5 { right: 16%; top: 10%; animation-duration: 12s; animation-delay: -6s; }
+.spider-6 { right: 4%; top: 35%; animation-duration: 15s; animation-delay: -9s; }
+
+@keyframes spiderVertical {
+  0% { transform: translateY(-15px); }
+  25% { transform: translateY(70px); }
+  50% { transform: translateY(180px); }
+  75% { transform: translateY(85px); }
+  100% { transform: translateY(-15px); }
+}
+
+@keyframes spiderWalk {
+  0% { transform: translateX(-50%) rotate(-8deg) scaleX(.9); }
+  50% { transform: translateX(-50%) rotate(8deg) scaleX(1.08); }
+  100% { transform: translateX(-50%) rotate(-8deg) scaleX(.9); }
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.chamber5-header {
+  height: 62px;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  border-bottom: 1px solid rgba(100,235,240,.14);
+  background: rgba(2,9,11,.92);
+  backdrop-filter: blur(16px);
+}
+
+.brand {
+  font-family: Georgia, serif;
+  font-size: 20px;
+}
+
+.brand-zero {
+  color: #8cefff;
+}
+
+.brand-divider {
+  color: #fff;
+}
+
+.brand-one {
+  color: #a891ff;
+}
+
+.chamber-nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.nav-node {
+  min-width: 42px;
+  text-align: center;
+  opacity: .3;
+}
+
+.nav-node span {
+  display: block;
+  font-size: 9px;
+}
+
+.nav-node small {
+  display: block;
+  margin-top: 4px;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.nav-node.visited {
+  opacity: .65;
+}
+
+.nav-node.active {
+  opacity: 1;
+  color: #70f7ff;
+  text-shadow: 0 0 10px rgba(70,240,250,.7);
+}
+
+.timer-box {
+  text-align: right;
+}
+
+.timer-box span {
+  display: block;
+  color: #5f7b7e;
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+.timer-box strong {
+  display: block;
+  margin-top: 2px;
+  color: #73f5ff;
+  font: 19px monospace;
+  letter-spacing: 1px;
+}
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
+.chamber5-main {
+  min-height: calc(100vh - 62px);
+  display: grid;
+  grid-template-columns: 235px minmax(700px,1fr) 245px;
+  position: relative;
+  z-index: 3;
+}
+
+.ghost-sidebar {
+  padding: 30px 14px;
+  border-right: 1px solid rgba(100,235,240,.12);
+  background: rgba(2,15,17,.35);
+}
+
+.sidebar-title,
+.progress-title {
+  color: #668386;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.chamber-number {
+  margin-top: 7px;
+  font: 52px Georgia,serif;
+  line-height: 1;
+}
+
+.ghost-title {
+  margin-top: 3px;
+  color: #6ef4ff;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 6px;
+}
+
+.sidebar-description {
+  margin-top: 25px;
+  color: #87a7aa;
+  font-size: 10px;
+  line-height: 1.9;
+}
+
+.progress-title {
+  margin-top: 46px;
+  margin-bottom: 12px;
+}
+
+.progress-list {
+  display: grid;
+  gap: 5px;
+}
+
+.progress-item {
+  display: flex;
+  gap: 10px;
+  padding: 11px 8px;
+  border-left: 2px solid transparent;
+  color: #658184;
+  font-size: 9px;
+  letter-spacing: .7px;
+  opacity: .5;
+}
+
+.progress-item.current {
+  border-left-color: #6cf6ff;
+  background: rgba(70,240,250,.055);
+  color: #e8ffff;
+  opacity: 1;
+}
+
+.progress-item.completed {
+  color: #70f5ce;
+  opacity: .9;
+}
+
+.sidebar-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  margin-top: 34px;
+}
+
+.sidebar-stats > div {
+  padding: 12px;
+  border: 1px solid rgba(100,235,240,.12);
+}
+
+.sidebar-stats span {
+  display: block;
+  color: #567174;
+  font-size: 7px;
+  letter-spacing: 1px;
+}
+
+.sidebar-stats strong {
+  display: block;
+  margin-top: 5px;
+  color: #d9fcff;
+  font: 18px monospace;
+}
+
+/* =========================================================
+   GAME AREA
+   ========================================================= */
+
+.ghost-game {
+  min-width: 0;
+  padding: 30px 24px;
+}
+
+.game-heading > span {
+  color: #66f3fc;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.game-heading h1 {
+  margin: 7px 0 4px;
+  color: #e8ffff;
+  font: 43px Georgia,serif;
+  letter-spacing: 2px;
+}
+
+.game-heading p {
+  margin: 0 0 20px;
+  color: #779396;
+  font-size: 11px;
+}
+
+.ghost-panel {
+  position: relative;
+  padding: 18px;
+  border: 1px solid rgba(100,235,240,.17);
+  background: linear-gradient(
+    180deg,
+    rgba(4,24,27,.82),
+    rgba(1,12,14,.9)
+  );
+}
+
+.extreme-panel::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 0;
+  width: 70px;
+  height: 2px;
+  background: linear-gradient(90deg,#6ef7ff,transparent);
+  box-shadow: 0 0 14px rgba(90,245,255,.6);
+}
+
+.panel-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(100,235,240,.1);
+}
+
+.panel-top span,
+.panel-top small {
+  font-size: 9px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.panel-top span {
+  color: #76dadd;
+}
+
+.panel-top small {
+  color: #507679;
+}
+
+.difficulty-banner {
+  margin: 12px 0;
+  padding: 11px 13px;
+  border: 1px solid rgba(100,235,240,.15);
+  background: rgba(0,240,255,.025);
+  color: #7deff5;
+  font: 9px monospace;
+  letter-spacing: 1.3px;
+}
+
+.round-copy {
+  color: #799497;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.round-copy b {
+  color: #d7ffff;
+}
+
+/* =========================================================
+   ROUND 1 — SHADOW
+   ========================================================= */
+
+.shadow-stage {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr;
+  gap: 12px;
+  margin-top: 17px;
+}
+
+.object-zone,
+.light-zone,
+.clue-zone {
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 1px solid rgba(100,235,240,.12);
+  background: radial-gradient(
+    circle at center,
+    rgba(70,240,250,.035),
+    transparent 70%
+  );
+  text-align: center;
+}
+
+.object-zone > span,
+.light-zone > span,
+.clue-zone > span {
+  align-self: flex-start;
+  color: #4e7275;
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+.ghost-object {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  margin: 10px 0;
+  color: #e8ffff;
+  font: 70px Georgia,serif;
+  text-shadow: 0 0 20px rgba(90,245,255,.18);
+}
+
+.object-zone strong,
+.light-zone strong {
+  color: #bcebed;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.light-beam {
+  margin: 15px 0;
+  color: #fff0a0;
+  font-size: 52px;
+  text-shadow: 0 0 20px rgba(255,220,90,.5);
+  animation: lightPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes lightPulse {
+  0%,100% { opacity: .6; }
+  50% { opacity: 1; }
+}
+
+.light-zone small {
+  max-width: 180px;
+  margin-top: 10px;
+  color: #597477;
+  font-size: 9px;
+}
+
+.clue-zone {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.clue-zone p {
+  color: #789598;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.shadow-options {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 9px;
+  margin-top: 13px;
+}
+
+.shadow-option {
+  position: relative;
+  min-height: 105px;
+  border: 1px solid rgba(100,235,240,.13);
+  background: linear-gradient(
+    180deg,
+    rgba(15,39,42,.65),
+    rgba(2,17,19,.9)
+  );
+  color: #dfffff;
+  cursor: pointer;
+  transition: .18s ease;
+}
+
+.shadow-option:hover {
+  transform: translateY(-3px);
+  border-color: #65f4fc;
+  box-shadow: 0 0 20px rgba(70,240,250,.12);
+}
+
+.shadow-option small {
+  position: absolute;
+  left: 9px;
+  top: 7px;
+  color: #5b7c7f;
+  font-size: 8px;
+}
+
+.shadow-option strong {
+  display: block;
+  margin-top: 14px;
+  font: 35px Georgia,serif;
+}
+
+.shadow-option span {
+  display: block;
+  margin-top: 7px;
+  color: #557174;
+  font-size: 7px;
+  letter-spacing: 1px;
+}
+
+.round-metric {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  color: #4d7073;
+  font: 8px monospace;
+}
+
+/* =========================================================
+   ROUND 2 — 24×24 ARROWS
+   ========================================================= */
+
+.arrows-board {
+  display: grid;
+  grid-template-columns: repeat(24,minmax(0,1fr));
+  width: 100%;
+  margin-top: 14px;
+  border: 1px solid rgba(100,235,240,.13);
+  background: #00080a;
+}
+
+.arrow-cell {
+  aspect-ratio: 1;
+  min-width: 0;
+  padding: 0;
+  border: 1px solid rgba(70,150,155,.09);
+  background: rgba(1,13,15,.4);
+  color: transparent;
+  font-size: clamp(6px,.8vw,14px);
+  cursor: default;
+}
+
+.arrow-cell.has-arrow {
+  cursor: pointer;
+}
+
+.arrow-cell.has-arrow:hover {
+  background: rgba(70,240,250,.1);
+  box-shadow: inset 0 0 14px rgba(70,240,250,.13);
+}
+
+.arrow-↑ {
+  color: #63f4ff;
+  text-shadow: 0 0 7px rgba(70,240,250,.65);
+}
+
+.arrow-↓ {
+  color: #80ffb8;
+  text-shadow: 0 0 7px rgba(90,255,170,.55);
+}
+
+.arrow-← {
+  color: #b899ff;
+  text-shadow: 0 0 7px rgba(160,120,255,.6);
+}
+
+.arrow-→ {
+  color: #ff86dd;
+  text-shadow: 0 0 7px rgba(255,100,210,.6);
+}
+
+.arrow-status,
+.bolt-status,
+.mahjong-status {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.arrow-status > div,
+.bolt-status > div,
+.mahjong-status > div {
+  padding: 12px;
+  border: 1px solid rgba(100,235,240,.12);
+  background: rgba(0,18,20,.4);
+}
+
+.arrow-status span,
+.bolt-status span,
+.mahjong-status span {
+  color: #547477;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+}
+
+.arrow-status strong,
+.bolt-status strong,
+.mahjong-status strong {
+  display: block;
+  margin-top: 4px;
+  color: #d8ffff;
+  font: 20px monospace;
+}
+
+/* =========================================================
+   ROUND 3 — GHOST BOLTS
+   ========================================================= */
+
+.colour-legend {
+  display: grid;
+  grid-template-columns: repeat(6,1fr);
+  gap: 6px;
+  margin: 15px 0;
+  color: #77979a;
+  font-size: 8px;
+  letter-spacing: .8px;
+}
+
+.colour-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.colour-legend i {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  box-shadow: 0 0 7px currentColor;
+}
+
+.bolt-instruction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-height: 42px;
+  margin-bottom: 14px;
+  padding: 9px;
+  border: 1px solid rgba(100,235,240,.13);
+  background: rgba(0,25,27,.5);
+  color: #75e8ee;
+  font: 8px monospace;
+  letter-spacing: 1px;
+}
+
+.bolt-instruction b {
+  color: #e8ffff;
+}
+
+.step-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  border: 1px solid rgba(100,235,240,.5);
+  border-radius: 50%;
+  color: #7af7ff;
+  font-size: 7px;
+}
+
+.bolt-board {
+  display: grid;
+  grid-template-columns: repeat(7,minmax(78px,1fr));
+  gap: 9px;
+  width: 100%;
+}
+
+.bolt-tube {
+  position: relative;
+  min-height: 245px;
+  padding: 29px 7px 8px;
+  border: 1px solid rgba(100,235,240,.13);
+  background: linear-gradient(
+    180deg,
+    rgba(5,29,32,.8),
+    rgba(1,12,14,.95)
+  );
+  color: #dfffff;
+  cursor: pointer;
+  transition: .18s ease;
+}
+
+.bolt-tube:hover {
+  transform: translateY(-2px);
+  border-color: rgba(100,240,250,.45);
+}
+
+.bolt-selected {
+  border-color: #70f7ff;
+  box-shadow:
+    0 0 25px rgba(60,240,255,.18),
+    inset 0 0 25px rgba(60,240,255,.06);
+}
+
+.tube-number {
+  position: absolute;
+  top: 8px;
+  left: 9px;
+  color: #4e7376;
+  font: 8px monospace;
+  letter-spacing: 1px;
+}
+
+.bolt-stack {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 6px;
+  min-height: 195px;
+}
+
+.ghost-bolt {
+  position: relative;
+  width: 50px;
+  height: 32px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 8px;
+  box-shadow:
+    inset 0 4px 5px rgba(255,255,255,.22),
+    inset 0 -4px 7px rgba(0,0,0,.12),
+    0 5px 12px rgba(0,0,0,.4);
+}
+
+.bolt-hole {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 14px;
+  height: 6px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: rgba(0,0,0,.32);
+}
+
+.bolt-tube em {
+  min-height: 195px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #46686b;
+  font: 8px monospace;
+  font-style: normal;
+  letter-spacing: 2px;
+}
+
+/* =========================================================
+   ROUND 4 — 48 INDIVIDUAL CARDS
+   ========================================================= */
+
+.mahjong-rule-strip {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 5px;
+  margin: 13px 0;
+  padding: 8px;
+  border: 1px solid rgba(100,235,240,.13);
+  background: rgba(0,25,27,.45);
+  color: #6bdde2;
+  font: 7px monospace;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.individual-card-board {
+  display: grid;
+  grid-template-columns: repeat(8,minmax(60px,1fr));
+  gap: 8px;
+  padding: 11px;
+  border: 1px solid rgba(100,235,240,.13);
+  background: rgba(0,7,9,.75);
+}
+
+.individual-mahjong-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: .72;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(120,220,225,.28);
+  border-radius: 6px;
+  background: linear-gradient(
+    145deg,
+    #f1f6f4,
+    #d6e1df 45%,
+    #9cacab
+  );
+  color: #071517;
+  cursor: pointer;
+  background-image:
+    radial-gradient(circle at 50% 38%, rgba(255,255,255,.62), transparent 30%),
+    linear-gradient(145deg, #f1f6f4, #d6e1df 45%, #9cacab);
+  box-shadow:
+    0 5px 13px rgba(0,0,0,.4),
+    inset 0 1px 2px rgba(255,255,255,.75);
+  transition: .16s ease;
+}
+
+.individual-mahjong-card::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(30,70,70,.12);
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.individual-mahjong-card:hover {
+  transform: translateY(-5px) scale(1.025);
+  border-color: rgba(100,247,255,.85);
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.55),
+    0 0 18px rgba(70,240,250,.13);
+}
+
+.individual-mahjong-card.card-selected {
+  transform: translateY(-6px) scale(1.04);
+  border: 2px solid #72f8ff;
+  box-shadow:
+    0 0 28px rgba(70,240,255,.45),
+    0 12px 30px rgba(0,0,0,.6);
+  z-index: 4;
+}
+
+.individual-mahjong-card.card-cleared {
+  border: 1px dashed rgba(100,235,240,.1);
+  background: rgba(0,17,19,.2);
+  box-shadow: none;
+  cursor: default;
+  transform: none;
+}
+
+.card-index {
+  position: absolute;
+  top: 6px;
+  left: 7px;
+  color: #506a6b;
+  font: 7px monospace;
+  letter-spacing: 1px;
+}
+
+.card-glyph {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  color: #152526;
+  font: 30px Georgia,serif;
+}
+
+.card-mark {
+  position: absolute;
+  left: 50%;
+  bottom: 9px;
+  transform: translateX(-50%);
+  color: #273b3c;
+  font: 12px Georgia,serif;
+  font-weight: 800;
+}
+
+.cleared-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%,-50%);
+  color: #3e6265;
+  font: 7px monospace;
+  letter-spacing: 1px;
+}
+
+/* =========================================================
+   RIGHT PANEL
+   ========================================================= */
+
+.ghost-right {
+  padding: 30px 14px;
+  border-left: 1px solid rgba(100,235,240,.12);
+}
+
+.right-card {
+  margin-bottom: 12px;
+  padding: 16px;
+  border: 1px solid rgba(100,235,240,.13);
+  background: rgba(0,20,22,.3);
+}
+
+.right-card > span {
+  color: #567679;
+  font-size: 8px;
+  letter-spacing: 1.7px;
+}
+
+.right-card h3 {
+  margin: 14px 0 0;
+  color: #e3ffff;
+  font: 18px Georgia,serif;
+}
+
+.clue-card strong {
+  display: inline-block;
+  margin-top: 10px;
+  color: #72f7ff;
+  font: 34px monospace;
+}
+
+.clue-card small {
+  color: #456366;
+  font: 8px monospace;
+}
+
+.binary-display {
+  margin: 15px 0 3px;
+  color: #72f7ff;
+  font: 29px monospace;
+  letter-spacing: 7px;
+}
+
+.stored-codes {
+  margin-top: 12px;
+}
+
+.stored-codes > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(100,235,240,.06);
+  color: #58787b;
+  font: 9px monospace;
+}
+
+.stored-codes b {
+  color: #c8ffff;
+}
+
+.restart-chamber {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(100,235,240,.15);
+  background: transparent;
+  color: #8caeb0;
+  font: 9px monospace;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.restart-chamber:hover {
+  border-color: #6cf5ff;
+  background: rgba(70,240,250,.05);
+  color: #dfffff;
+}
+
+/* =========================================================
+   COMPLETE
+   ========================================================= */
+
+.ghost-complete {
+  margin-top: 18px;
+  padding: 35px;
+  border: 1px solid rgba(100,255,210,.3);
+  background: radial-gradient(
+    circle at center,
+    rgba(50,255,190,.08),
+    transparent 65%
+  );
+  text-align: center;
+}
+
+.ghost-complete > div {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  margin-bottom: 12px;
+  border: 1px solid #68ffd4;
+  border-radius: 50%;
+  color: #68ffd4;
+  box-shadow: 0 0 20px rgba(70,255,200,.25);
+}
+
+.ghost-complete h2 {
+  margin: 0;
+  color: #cffff0;
+  font: 25px Georgia,serif;
+}
+
+.ghost-complete p {
+  color: #668e88;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.ghost-complete strong {
+  color: #70f6d2;
+  font: 23px monospace;
+  letter-spacing: 5px;
+}
+
+.binary-final-result {
+  display: inline-block;
+  min-width: 110px;
+  padding: 12px 18px;
+  border: 1px solid rgba(112,246,210,.28);
+  background: rgba(0,20,18,.55);
+  box-shadow: inset 0 0 18px rgba(70,255,200,.04);
+  text-shadow: 0 0 12px rgba(112,246,210,.55);
+}
+
+/* =========================================================
+   GAME OVER
+   ========================================================= */
+
+.game-over {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(1,6,8,.94);
+  backdrop-filter: blur(12px);
+  text-align: center;
+}
+
+.game-over h2 {
+  color: #ff7892;
+  font: 38px Georgia,serif;
+  letter-spacing: 3px;
+}
+
+.game-over p {
+  color: #769397;
+  font: 10px monospace;
+  letter-spacing: 2px;
+}
+
+.game-over button {
+  margin-top: 20px;
+  padding: 12px 28px;
+  border: 1px solid #6cf5ff;
+  background: rgba(70,240,250,.06);
+  color: #dfffff;
+  cursor: pointer;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #02090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #17484d;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #22666c;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width:1250px) {
+  .chamber5-main {
+    grid-template-columns: 190px minmax(650px,1fr);
+  }
+
+  .ghost-right {
+    display: none;
+  }
+}
+
+@media (max-width:950px) {
+  .chamber-nav {
+    display: none;
+  }
+
+  .chamber5-main {
+    grid-template-columns: 1fr;
+  }
+
+  .ghost-sidebar {
+    display: none;
+  }
+
+  .ghost-game {
+    padding: 22px 15px;
+  }
+
+  .shadow-stage {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .clue-zone {
+    grid-column: 1 / -1;
+  }
+
+  .bolt-board {
+    grid-template-columns: repeat(4,1fr);
+  }
+
+  .individual-card-board {
+    grid-template-columns: repeat(6,1fr);
+  }
+}
+
+@media (max-width:650px) {
+  .chamber5-header {
+    height: 54px;
+    padding: 0 10px;
+  }
+
+  .brand {
+    font-size: 16px;
+  }
+
+  .timer-box strong {
+    font-size: 15px;
+  }
+
+  .ghost-game {
+    padding: 16px 8px;
+  }
+
+  .game-heading h1 {
+    font-size: 31px;
+  }
+
+  .ghost-panel {
+    padding: 12px;
+  }
+
+  .shadow-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .clue-zone {
+    grid-column: auto;
+  }
+
+  .shadow-options {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .arrows-board {
+    grid-template-columns: repeat(24,25px);
+    width: max-content;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .arrow-cell {
+    width: 25px;
+  }
+
+  .colour-legend {
+    grid-template-columns: repeat(3,1fr);
+  }
+
+  .bolt-board {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .mahjong-rule-strip {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .individual-card-board {
+    grid-template-columns: repeat(4,1fr);
+    gap: 6px;
+    padding: 7px;
+  }
+
+  .card-glyph {
+    font-size: 24px;
+  }
+
+  .arrow-status,
+  .bolt-status,
+  .mahjong-status {
+    grid-template-columns: 1fr;
+  }
+
+  .floating-ghost {
+    opacity: .07;
+  }
+
+  .web {
+    opacity: .08;
+  }
+}
+
+@media (max-width:420px) {
+  .game-heading h1 {
+    font-size: 27px;
+  }
+
+  .bolt-board {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .ghost-bolt {
+    width: 42px;
+    height: 28px;
+  }
+
+  .individual-card-board {
+    grid-template-columns: repeat(4,1fr);
+  }
+
+  .card-glyph {
+    font-size: 21px;
+  }
+}
+/* =========================================================
+   FLOATING GHOSTS — CLEAN VERSION
+   EXACTLY 5 GHOSTS
+   ========================================================= */
+
+.ghost-background {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   GHOST BODY
+   ========================================================= */
+
+.floating-ghost {
+  position: absolute;
+
+  width: 76px;
+  height: 88px;
+
+  border-radius: 48% 48% 42% 42%;
+
+  background:
+    radial-gradient(
+      circle at 50% 28%,
+      rgba(255, 255, 255, 0.98) 0%,
+      rgba(225, 242, 244, 0.92) 35%,
+      rgba(170, 205, 208, 0.72) 65%,
+      rgba(110, 155, 160, 0.25) 100%
+    );
+
+  border: 1px solid rgba(225, 255, 255, 0.55);
+
+  box-shadow:
+    0 0 15px rgba(150, 245, 250, 0.25),
+    0 0 35px rgba(100, 230, 240, 0.12),
+    inset 0 0 18px rgba(255, 255, 255, 0.4);
+
+  filter: drop-shadow(
+    0 0 10px rgba(130, 240, 245, 0.25)
+  );
+
+  opacity: 0.30;
+
+  transform-origin: center bottom;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   GHOST WAVY BOTTOM
+   ========================================================= */
+
+.floating-ghost::after {
+  content: "";
+
+  position: absolute;
+
+  left: -1px;
+  bottom: -16px;
+
+  width: calc(100% + 2px);
+  height: 30px;
+
+  background: inherit;
+
+  border-left: 1px solid rgba(225, 255, 255, 0.45);
+  border-right: 1px solid rgba(225, 255, 255, 0.45);
+
+  clip-path: polygon(
+    0% 0%,
+    16% 48%,
+    33% 10%,
+    50% 55%,
+    67% 10%,
+    84% 48%,
+    100% 0%,
+    100% 100%,
+    0% 100%
+  );
+
+  opacity: 0.9;
+}
+
+
+/* =========================================================
+   GHOST EYES
+   ========================================================= */
+
+.ghost-eyes {
+  position: absolute;
+
+  top: 27px;
+  left: 50%;
+
+  width: 42px;
+  height: 20px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  z-index: 10;
+}
+
+
+/* LEFT + RIGHT EYE */
+
+.ghost-eyes span {
+  display: block;
+
+  width: 11px;
+  height: 17px;
+
+  background: #071012;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 3px rgba(0, 0, 0, 0.95),
+    0 0 7px rgba(0, 0, 0, 0.75);
+
+  animation: ghostEyePulse 3s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   GHOST MOUTH
+   ========================================================= */
+
+.ghost-mouth {
+  position: absolute;
+
+  top: 51px;
+  left: 50%;
+
+  width: 9px;
+  height: 14px;
+
+  transform: translateX(-50%);
+
+  background: #071012;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 6px rgba(0, 0, 0, 0.8);
+
+  z-index: 10;
+}
+
+
+/* =========================================================
+   EYE ANIMATION
+   ========================================================= */
+
+@keyframes ghostEyePulse {
+
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(0.85);
+  }
+}
+
+
+/* =========================================================
+   GHOST 1
+   ========================================================= */
+
+.ghost-1 {
+  left: 6%;
+  top: 18%;
+
+  animation:
+    ghostFloat1 8s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   GHOST 2
+   ========================================================= */
+
+.ghost-2 {
+  left: 25%;
+  top: 68%;
+
+  width: 58px;
+  height: 70px;
+
+  opacity: 0.24;
+
+  animation:
+    ghostFloat2 10s ease-in-out infinite 1.5s;
+}
+
+
+/* =========================================================
+   GHOST 3
+   ========================================================= */
+
+.ghost-3 {
+  left: 52%;
+  top: 22%;
+
+  width: 68px;
+  height: 82px;
+
+  opacity: 0.26;
+
+  animation:
+    ghostFloat3 9s ease-in-out infinite 2s;
+}
+
+
+/* =========================================================
+   GHOST 4
+   ========================================================= */
+
+.ghost-4 {
+  right: 7%;
+  top: 55%;
+
+  width: 88px;
+  height: 104px;
+
+  opacity: 0.28;
+
+  animation:
+    ghostFloat4 11s ease-in-out infinite 0.8s;
+}
+
+
+/* =========================================================
+   GHOST 5
+   ========================================================= */
+
+.ghost-5 {
+  right: 28%;
+  bottom: 13%;
+
+  width: 48px;
+  height: 58px;
+
+  opacity: 0.20;
+
+  animation:
+    ghostFloat5 7s ease-in-out infinite 3s;
+}
+
+
+/* =========================================================
+   GHOST 1 MOVEMENT
+   ========================================================= */
+
+@keyframes ghostFloat1 {
+
+  0% {
+    transform: translate(0, 0) rotate(-3deg);
+  }
+
+  25% {
+    transform: translate(35px, -40px) rotate(4deg);
+  }
+
+  50% {
+    transform: translate(65px, 5px) rotate(-2deg);
+  }
+
+  75% {
+    transform: translate(25px, 45px) rotate(5deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(-3deg);
+  }
+}
+
+
+/* =========================================================
+   GHOST 2 MOVEMENT
+   ========================================================= */
+
+@keyframes ghostFloat2 {
+
+  0% {
+    transform: translate(0, 0) rotate(4deg);
+  }
+
+  30% {
+    transform: translate(-45px, -30px) rotate(-4deg);
+  }
+
+  60% {
+    transform: translate(20px, -65px) rotate(3deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(4deg);
+  }
+}
+
+
+/* =========================================================
+   GHOST 3 MOVEMENT
+   ========================================================= */
+
+@keyframes ghostFloat3 {
+
+  0% {
+    transform: translate(0, 0) rotate(-2deg);
+  }
+
+  25% {
+    transform: translate(-35px, 40px) rotate(4deg);
+  }
+
+  50% {
+    transform: translate(20px, 70px) rotate(-4deg);
+  }
+
+  75% {
+    transform: translate(50px, 20px) rotate(2deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(-2deg);
+  }
+}
+
+
+/* =========================================================
+   GHOST 4 MOVEMENT
+   ========================================================= */
+
+@keyframes ghostFloat4 {
+
+  0% {
+    transform: translate(0, 0) rotate(3deg);
+  }
+
+  25% {
+    transform: translate(-50px, -60px) rotate(-4deg);
+  }
+
+  50% {
+    transform: translate(-90px, 10px) rotate(3deg);
+  }
+
+  75% {
+    transform: translate(-35px, 65px) rotate(-2deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(3deg);
+  }
+}
+
+
+/* =========================================================
+   GHOST 5 MOVEMENT
+   ========================================================= */
+
+@keyframes ghostFloat5 {
+
+  0% {
+    transform: translate(0, 0) rotate(-4deg);
+  }
+
+  25% {
+    transform: translate(30px, -40px) rotate(5deg);
+  }
+
+  50% {
+    transform: translate(-20px, -75px) rotate(-3deg);
+  }
+
+  75% {
+    transform: translate(-45px, 20px) rotate(4deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(-4deg);
+  }
+}
+
+
+/* =========================================================
+   KEEP GAME CONTENT ABOVE BACKGROUND GHOSTS
+   ========================================================= */
+
+.chamber5-main,
+.chamber5-header {
+  position: relative;
+  z-index: 5;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  .floating-ghost {
+    opacity: 0.18;
+    transform: scale(0.75);
+  }
+
+  .ghost-1 {
+    left: 3%;
+  }
+
+  .ghost-2 {
+    left: 15%;
+  }
+
+  .ghost-3 {
+    left: 48%;
+  }
+
+  .ghost-4 {
+    right: 2%;
+  }
+
+  .ghost-5 {
+    right: 20%;
+  }
+}
+
+/* =========================================================
+   ATMOSPHERE RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 650px) {
+  .floating-ghost {
+    opacity: .16;
+    transform: scale(.72);
+  }
+
+  .ghost-1 { left: 2%; }
+  .ghost-2 { left: 12%; }
+  .ghost-3 { left: 48%; }
+  .ghost-4 { right: 2%; }
+  .ghost-5 { right: 18%; }
+
+  .spider {
+    opacity: .38;
+    transform: scale(.82);
+  }
+
+  .web {
+    opacity: .10;
+  }
+}

@@ -1,0 +1,2083 @@
+/* =========================================================
+   ONES & ZEROS
+   CHAMBER 04 — LOOP
+   COMPLETE CHAMBER 4 STYLESHEET
+========================================================= */
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background: #ffd93d;
+  color: #171717;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.chamber4-page {
+  min-height: 100vh;
+  width: 100%;
+
+  padding: 18px 3.2vw 32px;
+
+  background:
+    radial-gradient(
+      circle at 48% 12%,
+      rgba(255, 124, 124, 0.9) 0,
+      rgba(255, 124, 124, 0.65) 18%,
+      rgba(255, 124, 124, 0) 38%
+    ),
+    linear-gradient(
+      135deg,
+      #ffe66d 0%,
+      #ffd83d 45%,
+      #ffd13b 100%
+    );
+
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.chamber4-header {
+  width: 100%;
+  max-width: 1560px;
+  margin: 0 auto 20px;
+
+  min-height: 74px;
+
+  padding: 12px 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 30px;
+
+  background: rgba(255, 239, 151, 0.68);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 12px 35px rgba(128, 89, 0, 0.08);
+}
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-small {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 10px 17px;
+
+  border-radius: 999px;
+
+  background: #171717;
+  color: #fff;
+
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  white-space: nowrap;
+}
+
+.brand h1 {
+  margin: 0;
+
+  font-size: clamp(22px, 2vw, 32px);
+  line-height: 1;
+
+  font-weight: 950;
+  letter-spacing: -1.5px;
+}
+
+.chamber-name {
+  color: #ef5275;
+
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+/* =========================================================
+   TIMER
+========================================================= */
+
+.timer {
+  min-width: 145px;
+
+  padding: 9px 18px;
+
+  border-radius: 999px;
+
+  background: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.timer span {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #c2b080;
+}
+
+.timer strong {
+  color: #d5b86f;
+
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.chamber4-layout {
+  width: 100%;
+  max-width: 1560px;
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    235px
+    minmax(0, 1fr)
+    235px;
+
+  gap: 20px;
+
+  align-items: start;
+}
+
+/* =========================================================
+   LEFT SIDEBAR
+========================================================= */
+
+.chamber4-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+
+  min-width: 0;
+}
+
+.side-card {
+  min-height: 82px;
+
+  padding: 19px 20px;
+
+  border-radius: 23px;
+
+  background: #fff;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.side-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #9d9d9d;
+
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.side-card strong {
+  display: block;
+
+  font-size: 16px;
+  line-height: 1.15;
+
+  font-weight: 900;
+}
+
+/* =========================================================
+   ROUND LIST
+========================================================= */
+
+.round-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  margin-top: 2px;
+}
+
+.round-item {
+  min-height: 68px;
+
+  padding: 10px 13px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.38);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.round-item > span {
+  width: 39px;
+  height: 39px;
+
+  flex: 0 0 39px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.round-item > div {
+  min-width: 0;
+}
+
+.round-item strong {
+  display: block;
+
+  font-size: 11px;
+  font-weight: 950;
+
+  line-height: 1.15;
+
+  letter-spacing: 0.3px;
+}
+
+.round-item small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #8d7e51;
+
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.round-item.active {
+  background: #171717;
+  color: #fff;
+
+  transform: translateX(3px);
+}
+
+.round-item.active > span {
+  background: #ff5f70;
+  color: #fff;
+}
+
+.round-item.active small {
+  color: #ff7c89;
+}
+
+.round-item.completed {
+  opacity: 0.75;
+}
+
+/* =========================================================
+   MAIN COLUMN
+========================================================= */
+
+.chamber4-main {
+  min-width: 0;
+
+  padding: 30px;
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 32px;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255, 117, 117, 0.55),
+      transparent 38%
+    ),
+    rgba(255, 229, 106, 0.5);
+
+  min-height: 720px;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   MAIN HEADING
+========================================================= */
+
+.main-heading {
+  margin-bottom: 22px;
+}
+
+.main-heading > span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #76652f;
+
+  font-size: 9px;
+  font-weight: 950;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.main-heading h2 {
+  margin: 0;
+
+  font-size: clamp(38px, 4.2vw, 68px);
+  line-height: 0.95;
+
+  font-weight: 950;
+  letter-spacing: -3px;
+}
+
+.main-heading p {
+  margin: 10px 0 0;
+
+  color: #4e4a3e;
+
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   GAME PANEL
+========================================================= */
+
+.game-panel {
+  width: 100%;
+
+  padding: clamp(28px, 4vw, 58px);
+
+  border-radius: 32px;
+
+  background: #fff;
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.08);
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   ROUND HEADER
+========================================================= */
+
+.round-header {
+  width: 100%;
+
+  margin-bottom: 34px;
+
+  text-align: center;
+}
+
+.round-header > span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #8a8a8a;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.round-header h3 {
+  margin: 0 0 9px;
+
+  font-size: clamp(25px, 3vw, 38px);
+  line-height: 1;
+
+  font-weight: 950;
+  letter-spacing: -1.5px;
+}
+
+.round-header p {
+  max-width: 680px;
+
+  margin: 0 auto;
+
+  color: #555;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   ROUND 1 — PATTERN
+========================================================= */
+
+.pattern-panel {
+  min-height: 500px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pattern-sequence {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(9, minmax(45px, 1fr));
+
+  gap: 9px;
+
+  margin: 10px auto 34px;
+
+  max-width: 900px;
+}
+
+.pattern-card {
+  min-height: 82px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid #f4ce30;
+  border-radius: 18px;
+
+  background: #fffdf2;
+
+  color: #171717;
+
+  font-size: 35px;
+  font-weight: 900;
+
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.06);
+}
+
+.pattern-card.question {
+  background: #171717;
+  color: #fff;
+
+  border-color: #171717;
+
+  font-size: 38px;
+}
+
+.pattern-options {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+
+  gap: 14px;
+
+  max-width: 700px;
+
+  margin: 0 auto 25px;
+}
+
+.pattern-option {
+  min-height: 64px;
+
+  padding: 12px 20px;
+
+  border-radius: 16px;
+
+  background: #f4f4f4;
+
+  color: #171717;
+
+  cursor: pointer;
+
+  font-size: 24px;
+  font-weight: 900;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.pattern-option:hover {
+  transform: translateY(-3px);
+
+  background: #171717;
+  color: #fff;
+
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.15);
+}
+
+.pattern-option:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.warning-box {
+  width: fit-content;
+  max-width: 100%;
+
+  margin: 0 auto;
+
+  padding: 12px 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  border-radius: 999px;
+
+  background: #fff5c8;
+
+  color: #63552d;
+
+  font-size: 12px;
+}
+
+.warning-box strong {
+  font-weight: 950;
+}
+
+/* =========================================================
+   IMPORTANT RULE
+========================================================= */
+
+.important-rule {
+  width: 100%;
+
+  margin-bottom: 28px;
+
+  padding: 15px 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  border-radius: 16px;
+
+  background: #fff5ce;
+
+  border: 1px solid #f1d36e;
+}
+
+.important-rule strong {
+  flex: 0 0 auto;
+
+  color: #e24f66;
+
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: 1.5px;
+}
+
+.important-rule span {
+  color: #5d563d;
+
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   ROUND 2 — CARDS
+========================================================= */
+
+.card-game-panel {
+  min-height: 600px;
+}
+
+.card-slots {
+  width: 100%;
+
+  display: grid;
+
+  gap: 15px;
+
+  margin: 0 auto 28px;
+}
+
+.five-card-slots {
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  max-width: 1000px;
+}
+
+.guess-card {
+  min-width: 0;
+  min-height: 210px;
+
+  padding: 17px 12px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  border: 2px solid #e8e8e8;
+  border-radius: 23px;
+
+  background: linear-gradient(
+    145deg,
+    #ffffff,
+    #f7f7f7
+  );
+
+  color: #171717;
+
+  cursor: grab;
+
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.07);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.guess-card:hover {
+  transform: translateY(-5px);
+
+  border-color: #f0cc42;
+
+  box-shadow:
+    0 18px 30px rgba(0, 0, 0, 0.1);
+}
+
+.guess-card:active {
+  cursor: grabbing;
+}
+
+.guess-card.selected-card {
+  border-color: #ef5875;
+
+  box-shadow:
+    0 0 0 4px rgba(239, 88, 117, 0.13),
+    0 18px 30px rgba(0, 0, 0, 0.1);
+
+  transform: translateY(-5px);
+}
+
+.guess-card.dragging-card {
+  opacity: 0.45;
+}
+
+.guess-card:disabled {
+  cursor: default;
+}
+
+.card-number {
+  align-self: stretch;
+
+  color: #a0a0a0;
+
+  font-size: 9px;
+  font-weight: 900;
+
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+  text-align: left;
+}
+
+.card-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 82px;
+
+  font-size: clamp(42px, 5vw, 66px);
+
+  line-height: 1;
+  font-weight: 900;
+}
+
+.card-name {
+  color: #5d5d5d;
+
+  font-size: 10px;
+  font-weight: 950;
+
+  letter-spacing: 1.5px;
+}
+
+/* =========================================================
+   CARD FEEDBACK
+========================================================= */
+
+.card-feedback {
+  width: fit-content;
+  max-width: 100%;
+
+  margin: 0 auto 20px;
+
+  padding: 14px 25px;
+
+  border-radius: 999px;
+
+  background: #171717;
+  color: #fff;
+
+  font-size: 13px;
+  font-weight: 950;
+
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.success-feedback {
+  background: #35a66f !important;
+  color: #fff !important;
+}
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.card-actions,
+.logic-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin: 15px auto 28px;
+}
+
+.primary-button,
+.secondary-button,
+.restart-button {
+  min-height: 48px;
+
+  padding: 0 25px;
+
+  border-radius: 999px;
+
+  font-size: 10px;
+  font-weight: 950;
+
+  letter-spacing: 1.4px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.primary-button {
+  background: #171717;
+  color: #fff;
+
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.15);
+}
+
+.primary-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 26px rgba(0, 0, 0, 0.2);
+}
+
+.secondary-button {
+  background: #efefef;
+  color: #222;
+}
+
+.secondary-button:hover {
+  transform: translateY(-2px);
+
+  background: #dedede;
+}
+
+.primary-button:disabled,
+.secondary-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* =========================================================
+   CARD RULES
+========================================================= */
+
+.card-rules {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 10px;
+}
+
+.card-rules > div {
+  min-height: 74px;
+
+  padding: 13px;
+
+  border-radius: 16px;
+
+  background: #fafafa;
+
+  text-align: center;
+}
+
+.card-rules strong {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #ef5271;
+
+  font-size: 9px;
+}
+
+.card-rules span {
+  display: block;
+
+  color: #666;
+
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   ROUND 3 — LOGIC LOCK
+========================================================= */
+
+.logic-panel {
+  min-height: 620px;
+}
+
+.logic-clues {
+  width: 100%;
+
+  max-width: 850px;
+
+  margin: 0 auto 30px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+.logic-clue {
+  width: 100%;
+
+  min-height: 48px;
+
+  padding: 10px 14px;
+
+  display: grid;
+
+  grid-template-columns: 36px minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 12px;
+
+  border-radius: 12px;
+
+  background: #f7f7f7;
+
+  border: 1px solid #ededed;
+}
+
+.logic-clue strong {
+  width: 31px;
+  height: 31px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #171717;
+  color: #fff;
+
+  font-size: 9px;
+}
+
+.logic-clue span {
+  min-width: 0;
+
+  color: #3e3e3e;
+
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.logic-board {
+  width: 100%;
+
+  max-width: 950px;
+
+  margin: 0 auto 25px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 13px;
+}
+
+.logic-card {
+  min-width: 0;
+  min-height: 180px;
+
+  padding: 16px 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  border: 2px solid #e5e5e5;
+  border-radius: 20px;
+
+  background: #fff;
+
+  color: #171717;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.06);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.logic-card:hover {
+  transform: translateY(-4px);
+
+  border-color: #f0cc42;
+}
+
+.logic-card.selected-card {
+  border-color: #ef5875;
+
+  box-shadow:
+    0 0 0 4px rgba(239, 88, 117, 0.13),
+    0 15px 28px rgba(0, 0, 0, 0.1);
+
+  transform: translateY(-4px);
+}
+
+.logic-card > span {
+  align-self: stretch;
+
+  color: #a0a0a0;
+
+  font-size: 8px;
+  font-weight: 950;
+
+  letter-spacing: 1.5px;
+
+  text-align: left;
+}
+
+.logic-card strong {
+  font-size: 55px;
+  line-height: 1;
+}
+
+.logic-card small {
+  color: #555;
+
+  font-size: 9px;
+  font-weight: 950;
+
+  letter-spacing: 1.2px;
+}
+
+.logic-feedback {
+  width: fit-content;
+  max-width: 100%;
+
+  margin: 0 auto 18px;
+
+  padding: 13px 22px;
+
+  border-radius: 999px;
+
+  background: #f3f3f3;
+
+  color: #444;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  text-align: center;
+}
+
+/* =========================================================
+   ROUND 4 — CONTAINER SHUFFLE
+========================================================= */
+
+.container-panel {
+  min-height: 650px;
+}
+
+.container-start-state,
+.final-state-panel,
+.operation-panel {
+  width: 100%;
+
+  max-width: 1000px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-start-state {
+  margin-bottom: 25px;
+}
+
+.container-start-state > span,
+.operation-title,
+.final-state-heading > span {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: #888;
+
+  font-size: 10px;
+  font-weight: 950;
+
+  letter-spacing: 1.8px;
+}
+
+.container-row {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+.container-card {
+  min-width: 0;
+  min-height: 145px;
+
+  padding: 14px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border: 1px solid #e3e3e3;
+  border-radius: 18px;
+
+  background: #fafafa;
+
+  color: #171717;
+}
+
+.container-card small {
+  align-self: stretch;
+
+  color: #999;
+
+  font-size: 8px;
+  font-weight: 950;
+
+  letter-spacing: 1.3px;
+
+  text-align: left;
+}
+
+.container-card strong {
+  font-size: 42px;
+  line-height: 1;
+}
+
+.container-card span {
+  max-width: 100%;
+
+  color: #555;
+
+  font-size: 9px;
+  font-weight: 950;
+
+  letter-spacing: 1px;
+
+  text-align: center;
+
+  overflow-wrap: anywhere;
+}
+
+.container-card.interactive {
+  cursor: pointer;
+
+  border: 2px solid #e6e6e6;
+
+  background: #fff;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.container-card.interactive:hover {
+  transform: translateY(-5px);
+
+  border-color: #f0cc42;
+
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.08);
+}
+
+.container-card.interactive:disabled {
+  cursor: default;
+}
+
+/* =========================================================
+   OPERATIONS
+========================================================= */
+
+.operation-panel {
+  margin-bottom: 28px;
+
+  padding: 20px;
+
+  border-radius: 20px;
+
+  background: #171717;
+
+  color: #fff;
+}
+
+.operation-title {
+  margin-bottom: 15px;
+
+  color: #ffd94d;
+}
+
+.operations {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.operations > div {
+  min-height: 38px;
+
+  padding: 8px 11px;
+
+  display: grid;
+
+  grid-template-columns: 32px minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 10px;
+
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.operations b {
+  width: 27px;
+  height: 27px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #ef5271;
+
+  color: #fff;
+
+  font-size: 8px;
+}
+
+.operations span {
+  min-width: 0;
+
+  color: #ededed;
+
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   FINAL STATE
+========================================================= */
+
+.final-state-panel {
+  margin-bottom: 22px;
+
+  padding: 22px;
+
+  border-radius: 22px;
+
+  background: #f7f7f7;
+
+  border: 1px solid #e7e7e7;
+}
+
+.final-state-heading {
+  margin-bottom: 17px;
+}
+
+.final-state-heading > span {
+  margin-bottom: 5px;
+}
+
+.final-state-heading small {
+  display: block;
+
+  color: #777;
+
+  font-size: 10px;
+}
+
+.container-feedback {
+  width: fit-content;
+  max-width: 100%;
+
+  margin: 0 auto 18px;
+
+  padding: 13px 20px;
+
+  border-radius: 999px;
+
+  background: #171717;
+  color: #fff;
+
+  font-size: 11px;
+  font-weight: 900;
+
+  text-align: center;
+}
+
+/* =========================================================
+   RIGHT SIDEBAR
+========================================================= */
+
+.chamber4-right {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+.objective-card {
+  padding: 27px 22px;
+
+  border-radius: 28px;
+
+  background: #171717;
+  color: #fff;
+
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.objective-card > span,
+.danger-card > span,
+.binary-card > span,
+.symbol-preview > span {
+  display: block;
+
+  margin-bottom: 12px;
+
+  font-size: 9px;
+  font-weight: 950;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.objective-card > span {
+  color: #ffd32e;
+}
+
+.objective-card h3 {
+  margin: 0 0 12px;
+
+  font-size: 25px;
+  line-height: 0.95;
+
+  font-weight: 950;
+  letter-spacing: -1px;
+}
+
+.objective-card p,
+.danger-card p {
+  margin: 0;
+
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.danger-card {
+  padding: 8px 2px 4px;
+
+  color: #171717;
+}
+
+.danger-card > span {
+  color: #d84b5d;
+}
+
+.danger-card strong {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 16px;
+  font-weight: 950;
+}
+
+/* =========================================================
+   BINARY CARD
+========================================================= */
+
+.binary-card {
+  padding: 25px 18px;
+
+  border-radius: 25px;
+
+  background: #fff;
+
+  text-align: center;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.binary-card > span {
+  color: #999;
+}
+
+.binary-card strong {
+  display: block;
+
+  margin: 9px 0;
+
+  font-size: 25px;
+  line-height: 1.2;
+
+  letter-spacing: 5px;
+  word-break: break-all;
+}
+
+.binary-card small {
+  color: #999;
+
+  font-size: 9px;
+}
+
+/* =========================================================
+   SYMBOL PREVIEW
+========================================================= */
+
+.symbol-preview {
+  padding: 19px;
+
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  text-align: center;
+}
+
+.symbol-preview > span {
+  color: #8e7e42;
+}
+
+.symbol-preview > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 15px;
+}
+
+.symbol-preview > div > span {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* =========================================================
+   RESTART
+========================================================= */
+
+.restart-button {
+  width: 100%;
+
+  background: #e15489;
+  color: #fff;
+
+  box-shadow:
+    0 8px 18px rgba(225, 84, 137, 0.2);
+}
+
+.restart-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 22px rgba(225, 84, 137, 0.3);
+}
+
+/* =========================================================
+   OVERLAYS
+========================================================= */
+
+.loop-overlay,
+.result-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 25px;
+
+  background: rgba(20, 20, 20, 0.72);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.loop-card,
+.result-card {
+  width: min(500px, 100%);
+
+  padding: 45px 35px;
+
+  border-radius: 30px;
+
+  background: #fff;
+
+  text-align: center;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.3);
+}
+
+.loop-symbol {
+  width: 65px;
+  height: 65px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #171717;
+  color: #ffd63c;
+
+  font-size: 34px;
+  font-weight: 900;
+}
+
+.loop-card > span,
+.result-card > span {
+  color: #ef5271;
+
+  font-size: 10px;
+  font-weight: 950;
+
+  letter-spacing: 2px;
+}
+
+.loop-card h2,
+.result-card h2 {
+  margin: 10px 0;
+
+  font-size: 38px;
+  line-height: 1;
+
+  font-weight: 950;
+  letter-spacing: -1.5px;
+}
+
+.loop-card p,
+.result-card p {
+  margin: 0;
+
+  color: #666;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   RESULT BINARY
+========================================================= */
+
+.result-binary {
+  margin: 25px auto 10px;
+
+  padding: 18px 25px;
+
+  width: fit-content;
+
+  border-radius: 18px;
+
+  background: #171717;
+  color: #ffd63c;
+
+  font-size: clamp(32px, 6vw, 52px);
+  font-weight: 950;
+
+  letter-spacing: 8px;
+
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.binary-label {
+  display: block;
+
+  margin-bottom: 15px;
+
+  color: #777 !important;
+
+  font-size: 9px !important;
+  letter-spacing: 2px !important;
+}
+
+.final-result-note {
+  margin-bottom: 25px !important;
+}
+
+.result-card button {
+  min-height: 50px;
+
+  margin-top: 22px;
+
+  padding: 0 27px;
+
+  border-radius: 999px;
+
+  background: #171717;
+  color: #fff;
+
+  cursor: pointer;
+
+  font-size: 10px;
+  font-weight: 950;
+
+  letter-spacing: 1.5px;
+}
+
+/* =========================================================
+   RESPONSIVE — 1250px
+========================================================= */
+
+@media (max-width: 1250px) {
+  .chamber4-layout {
+    grid-template-columns:
+      190px
+      minmax(0, 1fr)
+      190px;
+
+    gap: 15px;
+  }
+
+  .chamber4-main {
+    padding: 22px;
+  }
+
+  .five-card-slots {
+    gap: 10px;
+  }
+
+  .guess-card {
+    min-height: 190px;
+  }
+
+  .card-symbol {
+    font-size: 48px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — 1050px
+========================================================= */
+
+@media (max-width: 1050px) {
+  .chamber4-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .chamber4-sidebar {
+    display: grid;
+
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+
+    gap: 10px;
+  }
+
+  .round-list {
+    grid-column: 1 / -1;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+  }
+
+  .chamber4-right {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .restart-button {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — 800px
+========================================================= */
+
+@media (max-width: 800px) {
+  .chamber4-page {
+    padding: 12px;
+  }
+
+  .chamber4-header {
+    padding: 12px 17px;
+
+    border-radius: 22px;
+  }
+
+  .brand {
+    gap: 8px;
+  }
+
+  .brand-small {
+    padding: 8px 11px;
+
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .brand h1 {
+    font-size: 20px;
+  }
+
+  .chamber-name {
+    font-size: 11px;
+  }
+
+  .timer {
+    min-width: auto;
+
+    padding: 8px 12px;
+  }
+
+  .timer strong {
+    font-size: 16px;
+  }
+
+  .timer span {
+    display: none;
+  }
+
+  .chamber4-sidebar {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .round-list {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .chamber4-right {
+    grid-template-columns: 1fr;
+  }
+
+  .chamber4-main {
+    padding: 15px;
+
+    border-radius: 23px;
+  }
+
+  .main-heading {
+    padding: 8px 4px;
+  }
+
+  .main-heading h2 {
+    font-size: 42px;
+  }
+
+  .game-panel {
+    padding: 24px 16px;
+
+    border-radius: 22px;
+  }
+
+  .pattern-sequence {
+    grid-template-columns:
+      repeat(3, minmax(55px, 1fr));
+  }
+
+  .pattern-card {
+    min-height: 70px;
+  }
+
+  .pattern-options {
+    grid-template-columns:
+      repeat(2, minmax(100px, 1fr));
+  }
+
+  .five-card-slots {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .guess-card {
+    min-height: 175px;
+  }
+
+  .logic-board {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .logic-card:last-child {
+    grid-column: 1 / -1;
+
+    width: calc(50% - 6px);
+
+    margin: 0 auto;
+  }
+
+  .container-row {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .container-card:last-child {
+    grid-column: 1 / -1;
+
+    width: calc(50% - 6px);
+
+    margin: 0 auto;
+  }
+
+  .card-rules {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — 550px
+========================================================= */
+
+@media (max-width: 550px) {
+  .chamber4-header {
+    min-height: 65px;
+
+    padding: 9px 12px;
+  }
+
+  .brand-small {
+    display: none;
+  }
+
+  .brand h1 {
+    font-size: 18px;
+  }
+
+  .chamber-name {
+    font-size: 9px;
+  }
+
+  .timer {
+    padding: 7px 10px;
+  }
+
+  .timer strong {
+    font-size: 14px;
+  }
+
+  .chamber4-sidebar {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .side-card {
+    min-height: 72px;
+
+    padding: 14px;
+  }
+
+  .round-item {
+    min-height: 61px;
+  }
+
+  .main-heading h2 {
+    font-size: 35px;
+
+    letter-spacing: -2px;
+  }
+
+  .main-heading p {
+    font-size: 12px;
+  }
+
+  .round-header h3 {
+    font-size: 25px;
+  }
+
+  .round-header p {
+    font-size: 12px;
+  }
+
+  .pattern-sequence {
+    grid-template-columns:
+      repeat(3, 1fr);
+
+    gap: 7px;
+  }
+
+  .pattern-card {
+    min-height: 60px;
+
+    border-radius: 13px;
+
+    font-size: 25px;
+  }
+
+  .pattern-options {
+    gap: 8px;
+  }
+
+  .pattern-option {
+    min-height: 54px;
+
+    font-size: 20px;
+  }
+
+  .important-rule {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 7px;
+  }
+
+  .five-card-slots {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .guess-card {
+    min-height: 155px;
+  }
+
+  .card-symbol {
+    font-size: 42px;
+  }
+
+  .card-actions {
+    flex-direction: column;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+  }
+
+  .card-rules {
+    grid-template-columns: 1fr;
+  }
+
+  .logic-clue {
+    grid-template-columns: 31px minmax(0, 1fr);
+
+    gap: 8px;
+  }
+
+  .logic-clue span {
+    font-size: 11px;
+  }
+
+  .logic-board {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+  }
+
+  .logic-card {
+    min-height: 145px;
+  }
+
+  .logic-card strong {
+    font-size: 42px;
+  }
+
+  .logic-card:last-child {
+    width: 100%;
+
+    grid-column: auto;
+  }
+
+  .container-row {
+    gap: 8px;
+  }
+
+  .container-card {
+    min-height: 125px;
+
+    padding: 10px;
+  }
+
+  .container-card strong {
+    font-size: 34px;
+  }
+
+  .container-card span {
+    font-size: 8px;
+  }
+
+  .container-card:last-child {
+    width: 100%;
+
+    grid-column: auto;
+  }
+
+  .operation-panel {
+    padding: 15px;
+  }
+
+  .operations span {
+    font-size: 10px;
+  }
+
+  .final-state-panel {
+    padding: 14px;
+  }
+
+  .result-card {
+    padding: 35px 22px;
+  }
+
+  .result-binary {
+    letter-spacing: 4px;
+  }
+}
