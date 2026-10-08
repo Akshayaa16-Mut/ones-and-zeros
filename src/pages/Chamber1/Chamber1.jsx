@@ -511,19 +511,18 @@ const formatTime = (seconds) => {
 
 
 
-    const newSequence = [
+   const newSequence = [
+  ...sequence,
+  selectedAnswer,
+];
 
-      ...sequence,
+setSequence(newSequence);
 
-      selectedAnswer,
+// Clear the selected answer immediately
+// so it cannot carry over to the next question.
+setSelectedAnswer("");
 
-    ];
-
-
-
-    setSequence(newSequence);
-
-    setMessage("CORRECT — RECORD DECODED");
+setMessage("CORRECT — RECORD DECODED");
 
 
 
@@ -645,7 +644,7 @@ const formatTime = (seconds) => {
 
 
 
-      setSelectedAnswer("");
+      
 
       setMessage("");
 
