@@ -8100,49 +8100,13 @@ export default function Chamber5() {
 
 
 
-      {[1, 2, 3, 4, 5, 6].map((spider) => (
-
-
-
-
-
-
-
-          <div key={spider} className={`spider spider-${spider}`}>
-
-
-
-
-
-
-
-            <span className="spider-thread" />
-
-
-
-
-
-
-
-            <span className="spider-body">🕷</span>
-
-
-
-
-
-
-
-          </div>
-
-
-
-
-
-
-
-        ))}
-
-
+    <div className="spider-atmosphere">
+  {[1, 2, 3, 4, 5, 6].map((spider) => (
+    <div key={spider} className={`spider spider-${spider}`}>
+      <span className="spider-body">🕷</span>
+    </div>
+  ))}
+</div>
 
 
 

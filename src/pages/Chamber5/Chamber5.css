@@ -123,65 +123,319 @@ body {
 /* =========================================================
    SIX VERTICAL SPIDERS
    ========================================================= */
+/* =========================================
+   SPIDER ATMOSPHERE
+========================================= */
+
+.spider-atmosphere {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 100;
+}
+
+
+/* =========================================
+   SPIDER
+   ONLY THE SPIDER MOVES
+========================================= */
 
 .spider {
   position: fixed;
-  width: 42px;
-  height: 250px;
+  top: 0;
+
+  width: 60px;
+  height: 100vh;
+
   pointer-events: none;
-  z-index: 4;
-  display: flex;
-  justify-content: center;
-  opacity: .62;
-  animation: spiderVertical 10s ease-in-out infinite;
+  z-index: 110;
+
+  animation-name: spiderVertical;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
+
+
+/* =========================================
+   WEB
+   COMPLETELY STILL
+========================================= */
 
 .spider-thread {
   position: absolute;
-  top: -10px;
+
+  top: 0;
   left: 50%;
-  width: 1px;
-  height: 225px;
+
+  width: 2px;
+  height: 100vh;
+
   transform: translateX(-50%);
+
   background: linear-gradient(
     to bottom,
-    rgba(230,255,255,.03),
-    rgba(230,255,255,.55),
-    rgba(230,255,255,.08)
+    rgba(235, 255, 255, 0.15),
+    rgba(235, 255, 255, 0.75) 20%,
+    rgba(235, 255, 255, 0.75) 80%,
+    rgba(235, 255, 255, 0.15)
   );
-  box-shadow: 0 0 5px rgba(180,240,240,.12);
+
+  box-shadow:
+    0 0 5px rgba(200, 255, 255, 0.5),
+    0 0 10px rgba(150, 240, 240, 0.25);
+
+  /* IMPORTANT: web does NOT animate */
 }
+
+
+/* =========================================
+   SPIDER BODY
+========================================= */
+
+.spider-body {
+  position: absolute;
+
+  top: 0;
+  left: 50%;
+
+  font-size: 38px;
+  line-height: 1;
+
+  transform: translateX(-50%);
+
+  z-index: 120;
+
+  filter:
+    drop-shadow(0 0 7px rgba(120, 240, 240, 0.9))
+    drop-shadow(0 0 14px rgba(80, 220, 220, 0.5));
+
+  animation: spiderWalk 0.7s steps(2, end) infinite;
+}
+
+
+/* =========================================
+   6 SPIDERS
+========================================= */
+/* =========================================
+   NATURAL SPIDER MOVEMENT
+========================================= */
+
+.spider {
+  position: fixed;
+  top: 0;
+  width: 60px;
+  height: 100vh;
+
+  pointer-events: none;
+  z-index: 110;
+
+  animation-name: naturalSpiderMove;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+
+/* =========================================
+   SPIDER BODY
+========================================= */
 
 .spider-body {
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translateX(-50%);
-  font-size: 26px;
+
+  font-size: 34px;
   line-height: 1;
-  filter: grayscale(1) brightness(.72) drop-shadow(0 0 7px rgba(110,235,235,.32));
-  animation: spiderWalk .7s steps(2,end) infinite;
+
+  transform: translateX(-50%);
+
+  filter:
+    drop-shadow(0 0 5px rgba(120, 240, 240, 0.7))
+    drop-shadow(0 0 10px rgba(80, 220, 220, 0.35));
+
+  animation: naturalSpiderCrawl 1.2s ease-in-out infinite;
 }
 
-.spider-1 { left: 5%; top: 7%; animation-duration: 11s; animation-delay: -1s; }
-.spider-2 { left: 20%; top: 28%; animation-duration: 13s; animation-delay: -4s; }
-.spider-3 { left: 38%; top: 5%; animation-duration: 10s; animation-delay: -7s; }
-.spider-4 { right: 30%; top: 32%; animation-duration: 14s; animation-delay: -3s; }
-.spider-5 { right: 16%; top: 10%; animation-duration: 12s; animation-delay: -6s; }
-.spider-6 { right: 4%; top: 35%; animation-duration: 15s; animation-delay: -9s; }
+
+/* =========================================
+   SIX SPIDERS
+========================================= */
+
+.spider-1 {
+  left: 7%;
+  animation-duration: 18s;
+}
+
+.spider-2 {
+  left: 23%;
+  animation-duration: 22s;
+  animation-delay: -7s;
+}
+
+.spider-3 {
+  left: 39%;
+  animation-duration: 20s;
+  animation-delay: -11s;
+}
+
+.spider-4 {
+  right: 39%;
+  animation-duration: 24s;
+  animation-delay: -5s;
+}
+
+.spider-5 {
+  right: 22%;
+  animation-duration: 19s;
+  animation-delay: -14s;
+}
+
+.spider-6 {
+  right: 6%;
+  animation-duration: 21s;
+  animation-delay: -9s;
+}
+
+
+/* =========================================
+   NATURAL UP / DOWN MOVEMENT
+========================================= */
+
+@keyframes naturalSpiderMove {
+
+  0% {
+    transform: translateY(-5vh) translateX(0);
+  }
+
+  18% {
+    transform: translateY(12vh) translateX(5px);
+  }
+
+  38% {
+    transform: translateY(38vh) translateX(-4px);
+  }
+
+  55% {
+    transform: translateY(62vh) translateX(6px);
+  }
+
+  72% {
+    transform: translateY(82vh) translateX(-5px);
+  }
+
+  88% {
+    transform: translateY(55vh) translateX(3px);
+  }
+
+  100% {
+    transform: translateY(-5vh) translateX(0);
+  }
+
+}
+
+
+/* =========================================
+   NATURAL CRAWLING / LEG MOVEMENT
+========================================= */
+
+@keyframes naturalSpiderCrawl {
+
+  0% {
+    transform: translateX(-50%) rotate(-4deg) scale(0.96);
+  }
+
+  25% {
+    transform: translateX(-50%) rotate(3deg) scale(1);
+  }
+
+  50% {
+    transform: translateX(-50%) rotate(-2deg) scale(1.03);
+  }
+
+  75% {
+    transform: translateX(-50%) rotate(4deg) scale(0.98);
+  }
+
+  100% {
+    transform: translateX(-50%) rotate(-4deg) scale(0.96);
+  }
+
+}
+
+/* =========================================
+   SPIDER MOVES UP ↕ DOWN
+========================================= */
 
 @keyframes spiderVertical {
-  0% { transform: translateY(-15px); }
-  25% { transform: translateY(70px); }
-  50% { transform: translateY(180px); }
-  75% { transform: translateY(85px); }
-  100% { transform: translateY(-15px); }
+
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(calc(100vh - 50px));
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+
 }
 
+
+/* =========================================
+   SPIDER WALKING MOVEMENT
+========================================= */
+
 @keyframes spiderWalk {
-  0% { transform: translateX(-50%) rotate(-8deg) scaleX(.9); }
-  50% { transform: translateX(-50%) rotate(8deg) scaleX(1.08); }
-  100% { transform: translateX(-50%) rotate(-8deg) scaleX(.9); }
+
+  0% {
+    transform: translateX(-50%) rotate(-8deg);
+  }
+
+  50% {
+    transform: translateX(-50%) rotate(8deg);
+  }
+
+  100% {
+    transform: translateX(-50%) rotate(-8deg);
+  }
+
+}
+.spider-1 {
+  left: 7%;
+  animation-duration: 14s;
+}
+
+.spider-2 {
+  left: 23%;
+  animation-duration: 17s;
+  animation-delay: -4s;
+}
+
+.spider-3 {
+  left: 39%;
+  animation-duration: 15s;
+  animation-delay: -7s;
+}
+
+.spider-4 {
+  right: 39%;
+  animation-duration: 19s;
+  animation-delay: -9s;
+}
+
+.spider-5 {
+  right: 22%;
+  animation-duration: 16s;
+  animation-delay: -5s;
+}
+
+.spider-6 {
+  right: 6%;
+  animation-duration: 14.5s;
+  animation-delay: -8s;
 }
 
 /* =========================================================

@@ -1511,43 +1511,79 @@ export default function Chamber4() {
 
 
   const triggerLoop = useCallback(() => {
+  setLooping(true);
 
+  setTimeout(() => {
+    setLooping(false);
 
+    /*
+      CHAMBER 04 LOOP RULE
 
-    setLooping(true);
+      Any wrong answer in ANY round sends the
+      player back to ROUND 01 of CHAMBER 04.
 
+      The player does NOT leave Chamber 04.
+      The global 90-minute timer continues.
+    */
 
+    // Start Chamber 04 again from Round 01
+    setRoundIndex(0);
 
-    setTimeout(() => {
+    // Clear previous round completion state
+    setCompletedRounds([]);
 
+    // -----------------------------
+    // ROUND 1 RESET
+    // -----------------------------
+    setPatternIndex(0);
+    setPatternSolved(false);
 
+    // -----------------------------
+    // ROUND 2 RESET
+    // -----------------------------
+    const puzzle = createCardPuzzle();
 
-      setLooping(false);
+    setSecretCardOrder(puzzle.secret);
+    setPlayerCardOrder(puzzle.player);
 
+    setDraggedCardIndex(null);
+    setSelectedCardIndex(null);
+    setCardFeedback("");
+    setCardAttempts(0);
+    setCardSolved(false);
 
+    // -----------------------------
+    // ROUND 3 RESET
+    // -----------------------------
+    setLogicOrder(
+      shuffleArray(LOGIC_SYMBOLS)
+    );
 
-      setMessage(
+    setLogicSelectedIndex(null);
+    setLogicFeedback("");
+    setLogicSolved(false);
 
+    // -----------------------------
+    // ROUND 4 RESET
+    // -----------------------------
+    setContainerOrder([
+      ...INITIAL_CONTAINERS
+    ]);
 
+    setSelectedContainerIndex(null);
+    setContainerFeedback("");
+    setContainerSolved(false);
 
-        "LOOP DETECTED — returning to Chamber 01."
+    // -----------------------------
+    // LOOP MESSAGE
+    // -----------------------------
+    setMessage(
+      "LOOP DETECTED — Chamber 04 has restarted from Round 01."
+    );
 
+  }, 1200);
 
-
-      );
-
-
-
-      navigate("/chamber-01");
-
-
-
-    }, 1200);
-
-
-
-  }, [navigate]);
-
+}, []);
 
 
   /* =======================================================
@@ -2334,31 +2370,49 @@ export default function Chamber4() {
 
 
 
-    if (nextAttempt>= 5) {
+    /*
+   WRONG ANSWER = LOOP
 
+   Any failed Round 2 submission immediately
+   sends the player back to Round 01
+   of Chamber 04.
+*/
+/*
+   ROUND 2 — FIVE ATTEMPTS
 
+   The player gets exactly 5 guesses.
+   Guesses 1–4:
+   - Stay in Round 2
+   - Show the number of correct positions
 
-      setMistakes((value) => value + 1);
+   Guess 5:
+   - If still wrong → LOOP
+   - Return to Round 01 of Chamber 04
+*/
 
+setMistakes((value) => value + 1);
 
+if (nextAttempt >= 6) {
+  // 5th wrong guess → trigger the Chamber 04 loop
+  setCardFeedback("5 FAILED GUESSES — LOOP DETECTED.");
+  setSelectedCardIndex(null);
 
-      setCardAttempts(0);
+  triggerLoop();
+  return;
+}
 
+// Attempts 1–4: remain in Round 2
+setCardFeedback(
+  `${correctPositions} CORRECT — ${6 - nextAttempt} ATTEMPTS REMAINING`
+);
 
+setSelectedCardIndex(null);
 
-      setCardFeedback("");
-
-
-
-      setSelectedCardIndex(null);
-
-
-
-      triggerLoop();
-
-
-
-    }
+setMessage(
+  `Wrong arrangement. ${6 - nextAttempt} guess${
+    6 - nextAttempt === 1 ? "" : "es"
+  } remaining.`
+);
 
 
 

@@ -223,29 +223,35 @@ input:focus-visible {
 
 
 .chamber8-page {
-
   min-height: 100vh;
 
-
-
   padding:
-
     18px
-
     clamp(18px, 4vw, 70px)
-
     45px;
-
-
 
   position: relative;
 
-
-
   overflow-x: hidden;
 
+  background:
+    radial-gradient(
+      circle at 85% 12%,
+      rgba(116, 205, 239, 0.18),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 10% 80%,
+      rgba(178, 225, 243, 0.22),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      #f8fcfe 0%,
+      #edf5f9 48%,
+      #e7f1f6 100%
+    );
 }
-
 
 
 /* subtle bright atmosphere */
